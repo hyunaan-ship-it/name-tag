@@ -244,6 +244,16 @@ body {
   line-height: 1;
 }
 
+.optional-lecture {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #718096;
+  text-align: center;
+  word-break: keep-all;
+  max-width: 80%;
+}
+
 /* Bottom Section */
 .nametag-bottom {
   height: 15%;

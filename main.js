@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const elCoursePeriod = document.getElementById('course-period');
   const elDepartment = document.getElementById('department');
   const elName = document.getElementById('name');
+  const elOptionalLecture = document.getElementById('optional-lecture');
 
   let excelData = null;
   let isDataLoading = false;
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function loadExcelData() {
     try {
       isDataLoading = true;
-      const response = await fetch('/data.xlsx');
+      const response = await fetch(`/data.xlsx?t=${Date.now()}`);
       const arrayBuffer = await response.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, { type: 'array' });
       
@@ -82,11 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Data starts at index 3
     for (let i = 3; i < excelData.length; i++) {
       const row = excelData[i];
-      if (row[4] && String(row[4]) === query) {
+      // empNum is now at index 5
+      if (row[5] && String(row[5]) === query) {
         foundUser = {
           department: row[1] || '',
           name: row[2] || '',
-          period: row[3] || ''
+          lecture: row[3] || '',
+          period: row[4] || ''
         };
         break;
       }
@@ -114,6 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
       elCoursePeriod.textContent = formattedPeriod;
       elDepartment.textContent = foundUser.department;
       elName.textContent = foundUser.name;
+      
+      // Optional Lecture
+      if (foundUser.lecture && foundUser.lecture.trim() !== '') {
+        elOptionalLecture.textContent = foundUser.lecture;
+        elOptionalLecture.style.display = 'block';
+      } else {
+        elOptionalLecture.style.display = 'none';
+      }
 
       // Switch view
       searchContainer.classList.remove('active');
