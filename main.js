@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function loadExcelData() {
     try {
       isDataLoading = true;
-      const response = await fetch(`/data.xlsx?t=${Date.now()}`);
+      const response = await fetch(`data.xlsx?t=${Date.now()}`);
       const arrayBuffer = await response.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, { type: 'array' });
       
