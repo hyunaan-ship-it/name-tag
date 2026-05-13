@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>명찰 생성기</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Search Form -->
+      <div id="search-container" class="active">
+        <div class="logo">LG전자</div>
+        <h1>모바일 명찰 발급</h1>
+        <p>사번을 입력하여 명찰을 확인하세요.</p>
+        <div class="input-group">
+          <i class="ri-user-line"></i>
+          <input type="text" id="emp-number" placeholder="사번 입력 (예: 123456)" autocomplete="off" />
+        </div>
+        <button id="search-btn">명찰 확인하기</button>
+        <p id="error-msg" class="error"></p>
+      </div>
+
+      <!-- Nametag View -->
+      <div id="nametag-container">
+        <div class="nametag-card">
+          <!-- Top section -->
+          <div class="nametag-top">
+            <div class="course-info">
+              <div class="course-name" id="course-name">과정명</div>
+              <div class="course-period" id="course-period">기간</div>
+            </div>
+          </div>
+          
+          <!-- Middle section -->
+          <div class="nametag-middle">
+            <div class="department" id="department">부서</div>
+            <div class="name-container">
+              <div class="name" id="name">이름</div>
+            </div>
+          </div>
+          
+          <!-- Bottom section -->
+          <div class="nametag-bottom">
+            <div class="bottom-logo-container">
+              <img src="/logo.png" alt="LG전자" class="bottom-logo" />
+            </div>
+            <img src="/reinvent.png" alt="REINVENT" class="mascot" />
+          </div>
+        </div>
+        
+        <button id="back-btn" class="secondary-btn"><i class="ri-arrow-left-line"></i> 다시 검색하기</button>
+      </div>
+    </div>
+    
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
